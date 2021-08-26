@@ -187,5 +187,16 @@ dispersion
 ### Orden
 
 ```{r}
+cajas<-ggplot(mpg, aes(x=reorder(manufacturer, cty, median), y=cty)) + 
+    geom_boxplot()
+cajas
+```
 
+```{r}
+#Creamos datos de ejemplo 
+df <- data.frame(nombres = c("a", "b", "c"), resultado = c(2.3, 1.9, 3.2))
+
+histograma <- ggplot(df, aes(x=nombres, y=resultado)) + 
+  geom_col()
+histograma
 ```

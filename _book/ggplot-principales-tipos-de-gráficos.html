@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 4 ggplot: Principales tipos de gráficos | clase_visualizacion_CSC.utf8</title>
+  <meta name="description" content="" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 4 ggplot: Principales tipos de gráficos | clase_visualizacion_CSC.utf8" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 4 ggplot: Principales tipos de gráficos | clase_visualizacion_CSC.utf8" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="ggplot2-componentes-base.html"/>
+<link rel="next" href="ggplot-personalización.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">CSC 2021 - Visualización</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Resumen</a></li>
+<li class="chapter" data-level="2" data-path="introducción-clase.html"><a href="introducción-clase.html"><i class="fa fa-check"></i><b>2</b> Introducción clase</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="introducción-clase.html"><a href="introducción-clase.html#sobre-el-dataset"><i class="fa fa-check"></i><b>2.1</b> Sobre el dataset</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="ggplot2-componentes-base.html"><a href="ggplot2-componentes-base.html"><i class="fa fa-check"></i><b>3</b> ggplot2: Componentes base</a></li>
+<li class="chapter" data-level="4" data-path="ggplot-principales-tipos-de-gráficos.html"><a href="ggplot-principales-tipos-de-gráficos.html"><i class="fa fa-check"></i><b>4</b> ggplot: Principales tipos de gráficos</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="ggplot-principales-tipos-de-gráficos.html"><a href="ggplot-principales-tipos-de-gráficos.html#color"><i class="fa fa-check"></i><b>4.1</b> Color</a></li>
+<li class="chapter" data-level="4.2" data-path="ggplot-principales-tipos-de-gráficos.html"><a href="ggplot-principales-tipos-de-gráficos.html#formas"><i class="fa fa-check"></i><b>4.2</b> Formas</a></li>
+<li class="chapter" data-level="4.3" data-path="ggplot-principales-tipos-de-gráficos.html"><a href="ggplot-principales-tipos-de-gráficos.html#tamaño"><i class="fa fa-check"></i><b>4.3</b> Tamaño</a></li>
+<li class="chapter" data-level="4.4" data-path="ggplot-principales-tipos-de-gráficos.html"><a href="ggplot-principales-tipos-de-gráficos.html#mezclémoslas"><i class="fa fa-check"></i><b>4.4</b> Mezclémoslas</a></li>
+<li class="chapter" data-level="4.5" data-path="ggplot-principales-tipos-de-gráficos.html"><a href="ggplot-principales-tipos-de-gráficos.html#orden"><i class="fa fa-check"></i><b>4.5</b> Orden</a></li>
+<li class="chapter" data-level="4.6" data-path="ggplot-principales-tipos-de-gráficos.html"><a href="ggplot-principales-tipos-de-gráficos.html#facet-wrap-y-facet-grid"><i class="fa fa-check"></i><b>4.6</b> Facet wrap y Facet grid</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="ggplot-personalización.html"><a href="ggplot-personalización.html"><i class="fa fa-check"></i><b>5</b> ggplot: Personalización</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="ggplot-personalización.html"><a href="ggplot-personalización.html#títulos-y-ejes"><i class="fa fa-check"></i><b>5.1</b> Títulos y ejes</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://naimbro.github.io/programa_facso_2021.html" target="blank">Link programa CSC 2021.</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="ggplot-principales-tipos-de-gráficos" class="section level1" number="4">
+<h1><span class="header-section-number">Capítulo 4</span> ggplot: Principales tipos de gráficos</h1>
+<p>Revisaremos rápidamente gráficos que puedes constuir usando ggplot. Usaremos para este fin mpg.</p>
+<ol style="list-style-type: decimal">
+<li><strong>Histograma</strong> (histogram)</li>
+</ol>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="ggplot-principales-tipos-de-gráficos.html#cb4-1" aria-hidden="true" tabindex="-1"></a>histograma <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x=</span>cty)) <span class="sc">+</span> </span>
+<span id="cb4-2"><a href="ggplot-principales-tipos-de-gráficos.html#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span>
+<span id="cb4-3"><a href="ggplot-principales-tipos-de-gráficos.html#cb4-3" aria-hidden="true" tabindex="-1"></a>histograma</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="clase_visualizacion_CSC_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<ol start="2" style="list-style-type: decimal">
+<li><strong>Gráfico de densidad</strong> (density plot)</li>
+</ol>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="ggplot-principales-tipos-de-gráficos.html#cb6-1" aria-hidden="true" tabindex="-1"></a>densidad<span class="ot">&lt;-</span><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x=</span>cyl))<span class="sc">+</span></span>
+<span id="cb6-2"><a href="ggplot-principales-tipos-de-gráficos.html#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>()</span>
+<span id="cb6-3"><a href="ggplot-principales-tipos-de-gráficos.html#cb6-3" aria-hidden="true" tabindex="-1"></a>densidad</span></code></pre></div>
+<p><img src="clase_visualizacion_CSC_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<ol start="3" style="list-style-type: decimal">
+<li><strong>Diagrama de cajas</strong> (boxplot)</li>
+</ol>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="ggplot-principales-tipos-de-gráficos.html#cb7-1" aria-hidden="true" tabindex="-1"></a>cajas<span class="ot">&lt;-</span><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x=</span>manufacturer, <span class="at">y=</span>cty)) <span class="sc">+</span> </span>
+<span id="cb7-2"><a href="ggplot-principales-tipos-de-gráficos.html#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>()</span>
+<span id="cb7-3"><a href="ggplot-principales-tipos-de-gráficos.html#cb7-3" aria-hidden="true" tabindex="-1"></a>cajas</span></code></pre></div>
+<p><img src="clase_visualizacion_CSC_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<ol start="4" style="list-style-type: decimal">
+<li><strong>Diagrama de dispersión</strong> (scatterplot)</li>
+</ol>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="ggplot-principales-tipos-de-gráficos.html#cb8-1" aria-hidden="true" tabindex="-1"></a>dispersion<span class="ot">&lt;-</span><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x=</span>cty, <span class="at">y=</span>hwy)) <span class="sc">+</span> </span>
+<span id="cb8-2"><a href="ggplot-principales-tipos-de-gráficos.html#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span>
+<span id="cb8-3"><a href="ggplot-principales-tipos-de-gráficos.html#cb8-3" aria-hidden="true" tabindex="-1"></a>dispersion</span></code></pre></div>
+<p><img src="clase_visualizacion_CSC_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<ol start="5" style="list-style-type: decimal">
+<li><strong>Gráfico de líneas</strong> (lineplot)</li>
+</ol>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="ggplot-principales-tipos-de-gráficos.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Filtramos por un modelo en específico</span></span>
+<span id="cb9-2"><a href="ggplot-principales-tipos-de-gráficos.html#cb9-2" aria-hidden="true" tabindex="-1"></a>lineas<span class="ot">&lt;-</span><span class="fu">ggplot</span>(mpg[mpg<span class="sc">$</span>model<span class="sc">==</span><span class="st">&quot;range rover&quot;</span>,], <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>hwy, <span class="at">group=</span>manufacturer)) <span class="sc">+</span></span>
+<span id="cb9-3"><a href="ggplot-principales-tipos-de-gráficos.html#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() </span>
+<span id="cb9-4"><a href="ggplot-principales-tipos-de-gráficos.html#cb9-4" aria-hidden="true" tabindex="-1"></a>lineas</span></code></pre></div>
+<p><img src="clase_visualizacion_CSC_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><strong>Intentemos mejorar la visualización</strong></p>
+<p>Si bien los ejemplos anteriores son simples en cuanto a código, la calidad de la visualización es poca. Podemos mejorar los gráficos utilizando argumentos y funciones.</p>
+<div id="color" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Color</h2>
+<p>Una gran opción para mejorar nuestros gráficos es incorporar colores. Estos pueden ser iguales para todas las formas como aquí:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="ggplot-principales-tipos-de-gráficos.html#cb10-1" aria-hidden="true" tabindex="-1"></a>histograma <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x=</span>cty, <span class="at">fill=</span><span class="st">&quot;red&quot;</span>)) <span class="sc">+</span> </span>
+<span id="cb10-2"><a href="ggplot-principales-tipos-de-gráficos.html#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span>
+<span id="cb10-3"><a href="ggplot-principales-tipos-de-gráficos.html#cb10-3" aria-hidden="true" tabindex="-1"></a>histograma</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="clase_visualizacion_CSC_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>¿Lo ingresamos correctamente? ¿Es el color de relleno una variable categórica? Lo correcto es incorporarlo como característica de la forma geométrica:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="ggplot-principales-tipos-de-gráficos.html#cb12-1" aria-hidden="true" tabindex="-1"></a>histograma <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x=</span>cty)) <span class="sc">+</span> </span>
+<span id="cb12-2"><a href="ggplot-principales-tipos-de-gráficos.html#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill=</span><span class="st">&quot;red&quot;</span>)</span>
+<span id="cb12-3"><a href="ggplot-principales-tipos-de-gráficos.html#cb12-3" aria-hidden="true" tabindex="-1"></a>histograma</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="clase_visualizacion_CSC_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>¿Y si queremos usar los colores para distinguir en relación a una variable categórica? Ahora sí lo incorporamos al mapeo estético:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="ggplot-principales-tipos-de-gráficos.html#cb14-1" aria-hidden="true" tabindex="-1"></a>histograma <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x=</span>cty, <span class="at">fill=</span>manufacturer)) <span class="sc">+</span> </span>
+<span id="cb14-2"><a href="ggplot-principales-tipos-de-gráficos.html#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span>
+<span id="cb14-3"><a href="ggplot-principales-tipos-de-gráficos.html#cb14-3" aria-hidden="true" tabindex="-1"></a>histograma</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="clase_visualizacion_CSC_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+</div>
+<div id="formas" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Formas</h2>
+<p>Al igual que con los colores, podemos personalizar las formas de nuestros gráficos (en particular de nuestros <code>geom_points()</code>). Para esto modificamos el argumento <code>shape</code>.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="ggplot-principales-tipos-de-gráficos.html#cb16-1" aria-hidden="true" tabindex="-1"></a>dispersion<span class="ot">&lt;-</span><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x=</span>cty, <span class="at">y=</span>hwy, <span class="at">shape=</span><span class="fu">as.factor</span>(cyl))) <span class="sc">+</span> </span>
+<span id="cb16-2"><a href="ggplot-principales-tipos-de-gráficos.html#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span>
+<span id="cb16-3"><a href="ggplot-principales-tipos-de-gráficos.html#cb16-3" aria-hidden="true" tabindex="-1"></a>dispersion</span></code></pre></div>
+<p><img src="clase_visualizacion_CSC_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+</div>
+<div id="tamaño" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Tamaño</h2>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="ggplot-principales-tipos-de-gráficos.html#cb17-1" aria-hidden="true" tabindex="-1"></a>dispersion<span class="ot">&lt;-</span><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x=</span>manufacturer,</span>
+<span id="cb17-2"><a href="ggplot-principales-tipos-de-gráficos.html#cb17-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">y=</span>cty,</span>
+<span id="cb17-3"><a href="ggplot-principales-tipos-de-gráficos.html#cb17-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">size=</span>displ)) <span class="sc">+</span> </span>
+<span id="cb17-4"><a href="ggplot-principales-tipos-de-gráficos.html#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span>
+<span id="cb17-5"><a href="ggplot-principales-tipos-de-gráficos.html#cb17-5" aria-hidden="true" tabindex="-1"></a>dispersion</span></code></pre></div>
+<p><img src="clase_visualizacion_CSC_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+</div>
+<div id="mezclémoslas" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> Mezclémoslas</h2>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="ggplot-principales-tipos-de-gráficos.html#cb18-1" aria-hidden="true" tabindex="-1"></a>dispersion<span class="ot">&lt;-</span><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x=</span>manufacturer,</span>
+<span id="cb18-2"><a href="ggplot-principales-tipos-de-gráficos.html#cb18-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">y=</span>cty,</span>
+<span id="cb18-3"><a href="ggplot-principales-tipos-de-gráficos.html#cb18-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">size=</span>displ,</span>
+<span id="cb18-4"><a href="ggplot-principales-tipos-de-gráficos.html#cb18-4" aria-hidden="true" tabindex="-1"></a>                            <span class="at">shape=</span><span class="fu">as.factor</span>(year),</span>
+<span id="cb18-5"><a href="ggplot-principales-tipos-de-gráficos.html#cb18-5" aria-hidden="true" tabindex="-1"></a>                            <span class="at">color=</span><span class="fu">as.factor</span>(cyl)))<span class="sc">+</span></span>
+<span id="cb18-6"><a href="ggplot-principales-tipos-de-gráficos.html#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb18-7"><a href="ggplot-principales-tipos-de-gráficos.html#cb18-7" aria-hidden="true" tabindex="-1"></a>dispersion</span></code></pre></div>
+<p><img src="clase_visualizacion_CSC_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+</div>
+<div id="orden" class="section level2" number="4.5">
+<h2><span class="header-section-number">4.5</span> Orden</h2>
+<p>Podemos utilizar la función reorder() para cambiar el orden de un eje. El primer argumento define los datos a reordenar. El segundo define que variable se tomará como referencia para reordenar. El tercer argumento define la función que se usará para reordenar. Por defecto se usará la media, pero podemos utilizar otras.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="ggplot-principales-tipos-de-gráficos.html#cb19-1" aria-hidden="true" tabindex="-1"></a>cajas<span class="ot">&lt;-</span><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(manufacturer, cty, median),</span>
+<span id="cb19-2"><a href="ggplot-principales-tipos-de-gráficos.html#cb19-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">y=</span>cty)) <span class="sc">+</span> </span>
+<span id="cb19-3"><a href="ggplot-principales-tipos-de-gráficos.html#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>()</span>
+<span id="cb19-4"><a href="ggplot-principales-tipos-de-gráficos.html#cb19-4" aria-hidden="true" tabindex="-1"></a>cajas</span></code></pre></div>
+<p><img src="clase_visualizacion_CSC_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p>Para invertir el orden agregando un guión (“-”) antes del segundo argumento.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="ggplot-principales-tipos-de-gráficos.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Creamos datos de ejemplo </span></span>
+<span id="cb20-2"><a href="ggplot-principales-tipos-de-gráficos.html#cb20-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">nombres =</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>,<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>),</span>
+<span id="cb20-3"><a href="ggplot-principales-tipos-de-gráficos.html#cb20-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">resultado =</span> <span class="fu">c</span>(<span class="fl">2.3</span>, <span class="fl">1.9</span>, <span class="fl">3.2</span>,<span class="fl">4.3</span>, <span class="fl">0.9</span>, <span class="fl">2.2</span>),</span>
+<span id="cb20-4"><a href="ggplot-principales-tipos-de-gráficos.html#cb20-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">tipo=</span> <span class="fu">c</span>(<span class="st">&quot;alpha&quot;</span>,<span class="st">&quot;alpha&quot;</span>,<span class="st">&quot;beta&quot;</span>,<span class="st">&quot;beta&quot;</span>,<span class="st">&quot;beta&quot;</span>,<span class="st">&quot;beta&quot;</span>))</span>
+<span id="cb20-5"><a href="ggplot-principales-tipos-de-gráficos.html#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="ggplot-principales-tipos-de-gráficos.html#cb20-6" aria-hidden="true" tabindex="-1"></a>histograma <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df,<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(nombres,<span class="sc">-</span>resultado), <span class="co">#Aquí reordenamos decrecientemente</span></span>
+<span id="cb20-7"><a href="ggplot-principales-tipos-de-gráficos.html#cb20-7" aria-hidden="true" tabindex="-1"></a>                            <span class="at">y=</span>resultado,</span>
+<span id="cb20-8"><a href="ggplot-principales-tipos-de-gráficos.html#cb20-8" aria-hidden="true" tabindex="-1"></a>                            <span class="at">fill=</span>tipo)) <span class="sc">+</span> </span>
+<span id="cb20-9"><a href="ggplot-principales-tipos-de-gráficos.html#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>()</span>
+<span id="cb20-10"><a href="ggplot-principales-tipos-de-gráficos.html#cb20-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-11"><a href="ggplot-principales-tipos-de-gráficos.html#cb20-11" aria-hidden="true" tabindex="-1"></a>histograma</span></code></pre></div>
+<p><img src="clase_visualizacion_CSC_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+</div>
+<div id="facet-wrap-y-facet-grid" class="section level2" number="4.6">
+<h2><span class="header-section-number">4.6</span> Facet wrap y Facet grid</h2>
+<p>A través de la función <code>facet_wrap()</code> podemos separar nuestro gráfico según grupos contenidos en una variable. el argumento <code>ncol=</code> permite especificar la cantidad de columnas con sub-gráficos requerida.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="ggplot-principales-tipos-de-gráficos.html#cb21-1" aria-hidden="true" tabindex="-1"></a>dispersion<span class="ot">&lt;-</span><span class="fu">ggplot</span>(mpg, <span class="fu">aes</span>(<span class="at">x=</span>class,</span>
+<span id="cb21-2"><a href="ggplot-principales-tipos-de-gráficos.html#cb21-2" aria-hidden="true" tabindex="-1"></a>                            <span class="at">y=</span>cty,</span>
+<span id="cb21-3"><a href="ggplot-principales-tipos-de-gráficos.html#cb21-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">color=</span><span class="fu">as.factor</span>(cyl)))<span class="sc">+</span></span>
+<span id="cb21-4"><a href="ggplot-principales-tipos-de-gráficos.html#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb21-5"><a href="ggplot-principales-tipos-de-gráficos.html#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="ggplot-principales-tipos-de-gráficos.html#cb21-6" aria-hidden="true" tabindex="-1"></a>dispersion<span class="sc">+</span><span class="fu">facet_wrap</span>(<span class="sc">~</span> manufacturer, <span class="at">ncol =</span> <span class="dv">4</span>) </span></code></pre></div>
+<p><img src="clase_visualizacion_CSC_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="ggplot-principales-tipos-de-gráficos.html#cb22-1" aria-hidden="true" tabindex="-1"></a>dispersion<span class="sc">+</span><span class="fu">facet_wrap</span>(<span class="sc">~</span> year, <span class="at">ncol =</span> <span class="dv">1</span>) </span></code></pre></div>
+<p><img src="clase_visualizacion_CSC_files/figure-html/unnamed-chunk-18-2.png" width="672" /></p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="ggplot2-componentes-base.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ggplot-personalización.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["clase_visualizacion_CSC.pdf", "clase_visualizacion_CSC.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

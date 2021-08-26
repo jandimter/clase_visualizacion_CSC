@@ -1,0 +1,13 @@
+resumen
+introducción-clase
+sobre-el-dataset
+ggplot2-componentes-base
+ggplot-principales-tipos-de-gráficos
+color
+formas
+tamaño
+mezclémoslas
+orden
+facet-wrap-y-facet-grid
+ggplot-personalización
+títulos-y-ejes

@@ -1,9 +1,0 @@
-resumen
-introducción-clase
-sobre-el-dataset
-ggplot2-componentes-base
-ggplot-principales-gráficos
-intentemos-mejorar-la-visualización
-color
-formas
-tamaño

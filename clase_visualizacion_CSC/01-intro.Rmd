@@ -1,0 +1,191 @@
+---
+ui:
+    chapter_name: 'Capítulo '
+runtime: shiny_prerendered
+---
+
+# Introducción clase
+
+En esta clase realizaremos ejercicios de visualización a través de las librerías **ggplot2** y **plotly**. Utilizaremos el dataset `mpg` para la creación de gráficos. Éste se encuentra contenido en *tidyverse* [^intro-1]*.*
+
+[^intro-1]: Esta librería llama paquetes adicionales del universo tidyverse tales como ggplot2, dplyr, readr, stringr, etc.
+
+Realizamos la instalación y carga de los paquetes con el siguiente código:\
+
+```{r message=FALSE}
+#install.packages("tidyverse")
+#install.packages("plotly")
+library(tidyverse)
+library(plotly)
+
+```
+
+## Sobre el dataset
+
+Según la documentación de mpg (puedes encontrarla usando en tu consola el comando `?mpg` una vez hayas instalado ggplot2), las variables son las siguientes:
+
++------------------+-----------------------------------------------------------------------------------+
+| Variable         | Detalle                                                                           |
++:================:+===================================================================================+
+| **manufacturer** | Marca del auto                                                                    |
++------------------+-----------------------------------------------------------------------------------+
+| **model**        | Modelo del auto                                                                   |
++------------------+-----------------------------------------------------------------------------------+
+| **displ**        | Cilindrada, en litros.                                                            |
++------------------+-----------------------------------------------------------------------------------+
+| **year**         | Año de manufactura                                                                |
++------------------+-----------------------------------------------------------------------------------+
+| **cyl**          | Número de cilindros                                                               |
++------------------+-----------------------------------------------------------------------------------+
+| **trans**        | Tipo de transmisión                                                               |
++------------------+-----------------------------------------------------------------------------------+
+| **drv**          | Tipo de transmisión (f = transmisión delantera, r = transmisión trasera, 4 = 4x4) |
++------------------+-----------------------------------------------------------------------------------+
+| **cty**          | Millas por galón en ciudad                                                        |
++------------------+-----------------------------------------------------------------------------------+
+| **hwy**          | Millas por galón en autopista                                                     |
++------------------+-----------------------------------------------------------------------------------+
+| **fl**           | Tipo de combustible                                                               |
++------------------+-----------------------------------------------------------------------------------+
+| **class**        | Tipo de auto                                                                      |
++------------------+-----------------------------------------------------------------------------------+
+
+Una vez cargados los paquetes, revisamos las primeras y últimas filas de nuestro dataset:
+
+```{r}
+# Usamos knitr::kable() para ajustar el resultado a la visualización html.
+# Una alternativa más simple es usar por separadop las funciones head() y tail().
+knitr::kable(mpg[c(1:3,(nrow(mpg)-2):nrow(mpg)),])
+```
+
+# ggplot2: Componentes base
+
+![](Data/ggplot2_logo.png){width="200"}
+
+La librería ggplot2 de [Hadley Wickham](http://hadley.nz/) et al. (2014), parte del ecosistema de paquetes ***tidyverse,*** es un sistema declarativo para la creación de gráficos. ¿Qué quiere decir eso? Que le señalamos a ggplot2 cuál es nuestra data, cómo mapearla, qué elementos gráficos usar, y ggplot se encarga del resto.
+
+```{r eval=FALSE}
+ggplot(mpg, aes(displ, hwy, colour = class)) + 
+  geom_point()
+```
+
+Son 3 los componentes base a la hora de trabajar con ggplot2:
+
+1.  **Data**: literalmente son los datos que le entregaremos. Comunmente serán *data frames* o similares*.* Pueden estar agrupados o no. En el caso de nuestro ejemplo corresponde a `mpg`.
+2.  **Aesthetic mapping:** corresponde a indicadores en torno a la data que usamos. Posiblemente los más comunes e importantes son los parámetros x e y (ej. en un diagrama de dispersión). También podemos incorporar distinción por colores, formas, etc. En nuestra sintaxis de ejemplo, corresponde a `aes(displ, hwy, colour = class)`.
+3.  **Geometry:** Hasta ahora hemos señalado nuestra data y qué representación le daremos en el gráfico, sin embargo, nos falta el último componente: ¿qué tipo de gráfico usaremos? Es posible generar puntos, barras, cajas, etc. Las geometrías suelen ser combinables dependiendo del tipo de información con la que trabajes. En nuestro código de ejemplo corresponde a `geom_point()`.
+
+El resultado de ejemplo es el siguiente:
+
+```{r echo=FALSE}
+ggplot(mpg, aes(displ, hwy, colour = class)) + 
+  geom_point()
+```
+
+# ggplot: Principales tipos de gráficos
+
+Revisaremos rápidamente gráficos que puedes constuir usando ggplot. Usaremos para este fin mpg.
+
+1.  **Histograma** (histogram)
+
+```{r}
+histograma <- ggplot(mpg, aes(x=cty)) + 
+  geom_histogram()
+histograma
+```
+
+2.  **Gráfico de densidad** (density plot)
+
+```{r}
+densidad<-ggplot(mpg, aes(x=cyl))+
+  geom_density()
+densidad
+```
+
+3.  **Diagrama de cajas** (boxplot)
+
+```{r}
+cajas<-ggplot(mpg, aes(x=manufacturer, y=cty)) + 
+    geom_boxplot()
+cajas
+```
+
+4.  **Diagrama de dispersión** (scatterplot)
+
+```{r}
+dispersion<-ggplot(mpg, aes(x=cty, y=hwy)) + 
+    geom_point()
+dispersion
+```
+
+5.  **Gráfico de líneas** (lineplot)
+
+```{r}
+#Filtramos por un modelo en específico
+lineas<-ggplot(mpg[mpg$model=="range rover",], aes(x=year, y=hwy, group=manufacturer)) +
+  geom_line() 
+lineas
+```
+
+## Intentemos mejorar la visualización
+
+Si bien los ejemplos anteriores son simples en cuanto a código, la calidad de la visualización es poca. Podemos mejorar los gráficos utilizando argumentos y funciones.
+
+### Color
+
+Una gran opción para mejorar nuestros gráficos es incorporar colores. Estos pueden ser iguales para todas las formas como aquí:
+
+```{r warning=FALSE}
+histograma <- ggplot(mpg, aes(x=cty, fill="red")) + 
+  geom_histogram()
+histograma
+```
+
+¿Lo ingresamos correctamente? ¿Es el color de relleno una variable categórica? Lo correcto es incorporarlo como característica de la forma geométrica:
+
+```{r warning=FALSE}
+histograma <- ggplot(mpg, aes(x=cty)) + 
+  geom_histogram(fill="red")
+histograma
+```
+
+¿Y si queremos usar los colores para distinguir en relación a una variable categórica? Ahora sí lo incorporamos al mapeo estético:
+
+```{r warning=FALSE}
+histograma <- ggplot(mpg, aes(x=cty, fill=manufacturer)) + 
+  geom_histogram()
+histograma
+```
+
+### Formas
+
+Al igual que con los colores, podemos personalizar las formas de nuestros gráficos (en particular de nuestros `geom_points()`). Para esto modificamos el argumento `shape`.
+
+```{r}
+dispersion<-ggplot(mpg, aes(x=cty, y=hwy, shape=as.factor(cyl))) + 
+    geom_point()
+dispersion
+```
+
+### Tamaño
+
+```{r}
+dispersion<-ggplot(mpg, aes(x=manufacturer, y=cty, size=displ)) + 
+    geom_point()
+dispersion
+```
+
+### Mezclémoslas
+
+```{r}
+dispersion<-ggplot(mpg, aes(x=manufacturer, y=cty, size=displ, shape=as.factor(year),color=as.factor(cyl)))+
+  geom_point()
+dispersion
+
+```
+
+### Orden
+
+```{r}
+
+```

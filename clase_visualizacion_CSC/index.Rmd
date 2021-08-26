@@ -1,0 +1,21 @@
+---
+title: ""
+author: ""
+date: ""
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: ""
+---
+
+# Resumen
+
+Este bookdown fue diseñado para ser presentado en la cuarta clase del ramo *Ciencias Sociales Computacionales: Análisis de Redes Sociales y Procesamiento de Lenguaje Natural*, impartida por el profesor Naim Bro Khomasi el segundo semestre del 2021.
+
+**Curso:** Ciencias Sociales Computacionales - *Análisis de Redes Sociales y Procesamiento de Lenguaje Natural*.\
+**Institución:** Universidad de Chile.\
+**Profesor:** Naim Bro Khomasi.\
+**Ayudantes:** Jan Dimter y Nicolas Godoy.\
+**Fecha:** 26 de agosto de 2021.

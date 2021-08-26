@@ -11,3 +11,12 @@ orden
 facet-wrap-y-facet-grid
 ggplot-personalización
 títulos-y-ejes
+etiqueta-leyenda
+posición-leyenda
+añadir-subtítulo-y-nota
+saltos-de-línea
+girar-ejes
+rotar-etiquetas-eje
+plotly
+ggplotly
+animar

@@ -56,7 +56,7 @@ knitr::kable(mpg[c(1:3,(nrow(mpg)-2):nrow(mpg)),])
 
 ![](Data/ggplot2_logo.png){width="200"}
 
-La librería ggplot2 de [Hadley Wickham](http://hadley.nz/) et al. (2014), parte del ecosistema de paquetes ***tidyverse,*** es un sistema declarativo para la creación de gráficos. ¿Qué quiere decir eso? Que le señalamos a ggplot2 cuál es nuestra data, cómo mapearla, qué elementos gráficos usar, y ggplot se encarga del resto.
+La librería ggplot2 de [Hadley Wickham](http://hadley.nz/) et al. (2005), parte del ecosistema de paquetes ***tidyverse,*** es un sistema declarativo para la creación de gráficos. ¿Qué quiere decir eso? Que le señalamos a ggplot2 cuál es nuestra data, cómo mapearla, qué elementos gráficos usar, y ggplot se encarga del resto.
 
 ```{r eval=FALSE}
 ggplot(mpg, aes(displ, hwy, colour = class)) + 
@@ -291,4 +291,28 @@ dispersion+ coord_flip()
 dispersion + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 dispersion + theme(axis.text.x = element_text(angle = 45, hjust=1))
 dispersion + theme(axis.text.y = element_text(angle = 45, hjust=1))
+```
+
+# Plotly 
+
+## (ggplotly)
+
+Muchas veces nos enfrentaremos a datos complejos que pueden resultar confusos al usuario. Es posible convertir nuestros gráficos elaborados en ggplot a una versión interactiva fácilmente gracias al paquete. Si bien Plotly tiene su propia sintaxis, incorpora la función `ggplotly()` que solo requiere ingresar como input un pbjeto ggplot.
+
+```{r}
+ggplotly(dispersion)
+```
+
+## Animar
+
+```{r warning=FALSE}
+library(gapminder)
+
+
+p <- ggplot(gapminder, aes(gdpPercap, lifeExp, color = continent)) +
+  geom_point(aes(size = pop, frame = year, ids = country)) +
+  scale_x_log10()
+fig <- ggplotly(p)
+
+fig
 ```

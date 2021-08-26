@@ -30,9 +30,9 @@
   
   
 <link rel="prev" href="ggplot-principales-tipos-de-gráficos.html"/>
-<link rel="next" href="references.html"/>
+<link rel="next" href="plotly.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.5.1/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -51,6 +51,13 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.4.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.1.1/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.1.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.57.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.57.1/plotly-latest.min.js"></script>
 
 
 <style type="text/css">
@@ -153,8 +160,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5" data-path="ggplot-personalización.html"><a href="ggplot-personalización.html"><i class="fa fa-check"></i><b>5</b> ggplot: Personalización</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="ggplot-personalización.html"><a href="ggplot-personalización.html#títulos-y-ejes"><i class="fa fa-check"></i><b>5.1</b> Títulos y ejes</a></li>
+<li class="chapter" data-level="5.2" data-path="ggplot-personalización.html"><a href="ggplot-personalización.html#etiqueta-leyenda"><i class="fa fa-check"></i><b>5.2</b> Etiqueta leyenda</a></li>
+<li class="chapter" data-level="5.3" data-path="ggplot-personalización.html"><a href="ggplot-personalización.html#posición-leyenda"><i class="fa fa-check"></i><b>5.3</b> Posición leyenda</a></li>
+<li class="chapter" data-level="5.4" data-path="ggplot-personalización.html"><a href="ggplot-personalización.html#añadir-subtítulo-y-nota"><i class="fa fa-check"></i><b>5.4</b> Añadir subtítulo y nota</a></li>
+<li class="chapter" data-level="5.5" data-path="ggplot-personalización.html"><a href="ggplot-personalización.html#saltos-de-línea"><i class="fa fa-check"></i><b>5.5</b> Saltos de línea</a></li>
+<li class="chapter" data-level="5.6" data-path="ggplot-personalización.html"><a href="ggplot-personalización.html#girar-ejes"><i class="fa fa-check"></i><b>5.6</b> Girar ejes</a></li>
+<li class="chapter" data-level="5.7" data-path="ggplot-personalización.html"><a href="ggplot-personalización.html#rotar-etiquetas-eje"><i class="fa fa-check"></i><b>5.7</b> Rotar etiquetas eje</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="6" data-path="plotly.html"><a href="plotly.html"><i class="fa fa-check"></i><b>6</b> Plotly</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="plotly.html"><a href="plotly.html#ggplotly"><i class="fa fa-check"></i><b>6.1</b> (ggplotly)</a></li>
+<li class="chapter" data-level="6.2" data-path="plotly.html"><a href="plotly.html#animar"><i class="fa fa-check"></i><b>6.2</b> Animar</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://naimbro.github.io/programa_facso_2021.html" target="blank">Link programa CSC 2021.</a></li>
 
@@ -180,12 +197,56 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Es posible que, aunque a nivel de datos tengamos nuestra tarea completa, queden elementos por perfeccionar en cuanto visualización. Revisaremos las principales opciones de personalización.</p>
 <div id="títulos-y-ejes" class="section level2" number="5.1">
 <h2><span class="header-section-number">5.1</span> Títulos y ejes</h2>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="ggplot-personalización.html#cb23-1" aria-hidden="true" tabindex="-1"></a>dispersion<span class="sc">+</span></span>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="ggplot-personalización.html#cb23-1" aria-hidden="true" tabindex="-1"></a>dispersion<span class="ot">&lt;-</span>dispersion<span class="sc">+</span></span>
 <span id="cb23-2"><a href="ggplot-personalización.html#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Figura 1: Gráfico de dispersión&quot;</span>)<span class="sc">+</span> <span class="co">#Se añade título</span></span>
-<span id="cb23-3"><a href="ggplot-personalización.html#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Tipo de vehículo&quot;</span>) <span class="sc">+</span></span>
-<span id="cb23-4"><a href="ggplot-personalización.html#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Rendimiento en ciudad&quot;</span>)</span></code></pre></div>
+<span id="cb23-3"><a href="ggplot-personalización.html#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Tipo de vehículo&quot;</span>) <span class="sc">+</span> <span class="co">#Añade etiqueta eje horizontal</span></span>
+<span id="cb23-4"><a href="ggplot-personalización.html#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;Rendimiento en ciudad&quot;</span>) <span class="co">#Añade etiqueta eje vertical</span></span>
+<span id="cb23-5"><a href="ggplot-personalización.html#cb23-5" aria-hidden="true" tabindex="-1"></a>dispersion</span></code></pre></div>
 <p><img src="clase_visualizacion_CSC_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
-
+</div>
+<div id="etiqueta-leyenda" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Etiqueta leyenda</h2>
+<p>Es importante escribir correctamtente el elemento respectivo a la leyenda. En este ejemplo corresponde a <code>color</code>, sin embargo también podría ser <code>shape</code> o <code>fill</code>.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="ggplot-personalización.html#cb24-1" aria-hidden="true" tabindex="-1"></a>dispersion<span class="ot">&lt;-</span>dispersion<span class="sc">+</span><span class="fu">labs</span>(<span class="at">color =</span> <span class="st">&quot;Cilindrada&quot;</span>)</span>
+<span id="cb24-2"><a href="ggplot-personalización.html#cb24-2" aria-hidden="true" tabindex="-1"></a>dispersion</span></code></pre></div>
+<p><img src="clase_visualizacion_CSC_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+</div>
+<div id="posición-leyenda" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> Posición leyenda</h2>
+<p>La función theme() nos permite editar muchos aspectos de nuestro gráfico. Uno de estos es la posición de la leyenda:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="ggplot-personalización.html#cb25-1" aria-hidden="true" tabindex="-1"></a>dispersión<span class="ot">&lt;-</span>dispersion<span class="sc">+</span><span class="fu">theme</span>(<span class="at">legend.position=</span><span class="st">&#39;bottom&#39;</span>) <span class="co">#Para colocarlo arriba usar &#39;top&#39;</span></span>
+<span id="cb25-2"><a href="ggplot-personalización.html#cb25-2" aria-hidden="true" tabindex="-1"></a>dispersión</span></code></pre></div>
+<p><img src="clase_visualizacion_CSC_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<p>@</p>
+</div>
+<div id="añadir-subtítulo-y-nota" class="section level2" number="5.4">
+<h2><span class="header-section-number">5.4</span> Añadir subtítulo y nota</h2>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="ggplot-personalización.html#cb26-1" aria-hidden="true" tabindex="-1"></a>dispersion<span class="ot">&lt;-</span>dispersion<span class="sc">+</span><span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">&quot;Rendimiento en ciudad según tipo de vehículo&quot;</span>,</span>
+<span id="cb26-2"><a href="ggplot-personalización.html#cb26-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&quot;Fuente: Datos contenidos en mpg.&quot;</span>)</span>
+<span id="cb26-3"><a href="ggplot-personalización.html#cb26-3" aria-hidden="true" tabindex="-1"></a>dispersion</span></code></pre></div>
+<p><img src="clase_visualizacion_CSC_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+</div>
+<div id="saltos-de-línea" class="section level2" number="5.5">
+<h2><span class="header-section-number">5.5</span> Saltos de línea</h2>
+<p>Para usar la tipografía con un estilo especial dentro de un texto a través de</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="ggplot-personalización.html#cb27-1" aria-hidden="true" tabindex="-1"></a>dispersion<span class="sc">+</span><span class="fu">labs</span>(<span class="at">subtitle =</span> <span class="st">&quot;Rendimiento en ciudad</span><span class="sc">\n</span><span class="st">según tipo</span><span class="sc">\n</span><span class="st">de vehículo&quot;</span>,</span>
+<span id="cb27-2"><a href="ggplot-personalización.html#cb27-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">&quot;Fuente: Datos contenidos en mpg.&quot;</span>)</span></code></pre></div>
+<p><img src="clase_visualizacion_CSC_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+</div>
+<div id="girar-ejes" class="section level2" number="5.6">
+<h2><span class="header-section-number">5.6</span> Girar ejes</h2>
+<p>A través de la función coord_flip() es posible intercambiar los ejes de nuestro gráfico:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="ggplot-personalización.html#cb28-1" aria-hidden="true" tabindex="-1"></a>dispersion<span class="sc">+</span> <span class="fu">coord_flip</span>()</span></code></pre></div>
+<p><img src="clase_visualizacion_CSC_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+</div>
+<div id="rotar-etiquetas-eje" class="section level2" number="5.7">
+<h2><span class="header-section-number">5.7</span> Rotar etiquetas eje</h2>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="ggplot-personalización.html#cb29-1" aria-hidden="true" tabindex="-1"></a>dispersion <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span></code></pre></div>
+<p><img src="clase_visualizacion_CSC_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="ggplot-personalización.html#cb30-1" aria-hidden="true" tabindex="-1"></a>dispersion <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span></code></pre></div>
+<p><img src="clase_visualizacion_CSC_files/figure-html/unnamed-chunk-25-2.png" width="672" /></p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="ggplot-personalización.html#cb31-1" aria-hidden="true" tabindex="-1"></a>dispersion <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust=</span><span class="dv">1</span>))</span></code></pre></div>
+<p><img src="clase_visualizacion_CSC_files/figure-html/unnamed-chunk-25-3.png" width="672" /></p>
 </div>
 </div>
             </section>
@@ -194,7 +255,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="ggplot-principales-tipos-de-gráficos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="plotly.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -1,8 +1,8 @@
 # Introducción clase
 
-En esta clase realizaremos ejercicios de visualización a través de las librerías **ggplot2** y **plotly**. Utilizaremos el dataset `mpg` para la creación de gráficos. Éste se encuentra contenido en *tidyverse* [^intro-1]*.*
+En esta clase realizaremos ejercicios de visualización a través de las librerías **ggplot2** y **plotly**. Utilizaremos el dataset `mpg` para la creación de gráficos. Éste se encuentra contenido en *tidyverse* [^visualizacion-1]*.*
 
-[^intro-1]: Esta librería llama paquetes adicionales del universo tidyverse tales como ggplot2, dplyr, readr, stringr, etc.
+[^visualizacion-1]: Esta librería llama paquetes adicionales del universo tidyverse tales como ggplot2, dplyr, readr, stringr, etc.
 
 Realizamos la instalación y carga de los paquetes con el siguiente código:\
 
@@ -80,7 +80,7 @@ ggplot(mpg, aes(displ, hwy, colour = class)) +
 
 Revisaremos rápidamente gráficos que puedes constuir usando ggplot. Usaremos para este fin mpg.
 
-1.  **Histograma** (histogram)
+## 1. **Histograma** (histogram)
 
 ```{r}
 histograma <- ggplot(mpg, aes(x=cty)) + 
@@ -88,7 +88,7 @@ histograma <- ggplot(mpg, aes(x=cty)) +
 histograma
 ```
 
-2.  **Gráfico de densidad** (density plot)
+## 2.  **Gráfico de densidad** (density plot)
 
 ```{r}
 densidad<-ggplot(mpg, aes(x=cyl))+
@@ -96,7 +96,7 @@ densidad<-ggplot(mpg, aes(x=cyl))+
 densidad
 ```
 
-3.  **Diagrama de cajas** (boxplot)
+## 3.  **Diagrama de cajas** (boxplot)
 
 ```{r}
 cajas<-ggplot(mpg, aes(x=manufacturer, y=cty)) + 
@@ -104,7 +104,7 @@ cajas<-ggplot(mpg, aes(x=manufacturer, y=cty)) +
 cajas
 ```
 
-4.  **Diagrama de dispersión** (scatterplot)
+## 4.  **Diagrama de dispersión** (scatterplot)
 
 ```{r}
 dispersion<-ggplot(mpg, aes(x=cty, y=hwy)) + 
@@ -112,7 +112,7 @@ dispersion<-ggplot(mpg, aes(x=cty, y=hwy)) +
 dispersion
 ```
 
-5.  **Gráfico de líneas** (lineplot)
+## 5.  **Gráfico de líneas** (lineplot)
 
 ```{r}
 #Filtramos por un modelo en específico
@@ -121,7 +121,7 @@ lineas<-ggplot(mpg[mpg$model=="range rover",], aes(x=year, y=hwy, group=manufact
 lineas
 ```
 
-**Intentemos mejorar la visualización**
+# Parámetros
 
 Si bien los ejemplos anteriores son simples en cuanto a código, la calidad de la visualización es poca. Podemos mejorar los gráficos utilizando argumentos y funciones.
 
@@ -258,8 +258,6 @@ dispersión
 
 ```
 
-@
-
 ## Añadir subtítulo y nota
 
 ```{r}
@@ -292,8 +290,17 @@ dispersion + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 dispersion + theme(axis.text.x = element_text(angle = 45, hjust=1))
 dispersion + theme(axis.text.y = element_text(angle = 45, hjust=1))
 ```
+## Temas completos 
 
-# Plotly 
+```{r}
+dispersion + theme_bw()
+dispersion + theme_dark()
+dispersion + theme_minimal()
+dispersion + theme_void()
+
+```
+
+# Plotly
 
 ## (ggplotly)
 

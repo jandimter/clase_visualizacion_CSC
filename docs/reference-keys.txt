@@ -3,6 +3,12 @@ introducción-clase
 sobre-el-dataset
 ggplot2-componentes-base
 ggplot-principales-tipos-de-gráficos
+histograma-histogram
+gráfico-de-densidad-density-plot
+diagrama-de-cajas-boxplot
+diagrama-de-dispersión-scatterplot
+gráfico-de-líneas-lineplot
+parámetros
 color
 formas
 tamaño

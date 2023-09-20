@@ -12,10 +12,10 @@ description: ""
 
 # Resumen
 
-Este bookdown fue diseñado para ser presentado en la cuarta clase del ramo *Ciencias Sociales Computacionales: Análisis de Redes Sociales y Procesamiento de Lenguaje Natural*, impartida por el profesor Naim Bro Khomasi el segundo semestre del 2021.
+Este bookdown fue diseñado para ser presentado en la cuarta clase del ramo *Aproximación a la política pública desde los datos*, impartida por el profesor Naim Bro Khomasi el segundo semestre del 2023.
 
-**Curso:** Ciencias Sociales Computacionales - *Análisis de Redes Sociales y Procesamiento de Lenguaje Natural*.\
+**Curso:** Aproximación a la política pública desde los datos.\
 **Institución:** Universidad de Chile.\
 **Profesor:** Naim Bro Khomasi.\
-**Ayudantes:** Jan Dimter y Nicolas Godoy.\
-**Fecha:** 26 de agosto de 2021.
+**Ayudantes:** Jan Dimter.\
+**Fecha:** Septiembre de 2023.
